@@ -1,87 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sustav za upravljanje knjiznicom</title>
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-theme.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+    @yield('styles')
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-
-    <!-- Scripts -->
-    <script>
-        window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
-    </script>
+    <!-- JavaScript Files -->
+    <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+    @yield('scripts')
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">SUK</a>
             </div>
-        </nav>
 
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    @if(Auth::check())
+                        <li class="active"><a href="{{ url('home') }}">Pocetna</a></li>
+                        @if(Auth::user()->hasRole('member'))
+                            <li><a href="#">Knjige</a></li>
+                        @endif
+                    @endif
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if(Auth::check())
+                        @if(Auth::user()->hasRole('employee'))
+                            <li><a href="#">Zaposlenik</a></li>
+                        @endif
+                        @if(Auth::user()->hasRole('admin'))
+                            <li><a href="#">Administrator</a></li>
+                        @endif
+                        <li>
+                            <a href="{{ url('/logout') }}" 
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                Odjava
+                            </a>
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    @else
+                        <li><a href="{{ url('login') }}">Prijava</a></li>
+                        <li><a href="{{ url('register') }}">Registracija</a></li>
+                    @endif
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
         @yield('content')
     </div>
-
-    <!-- Scripts -->
-    <script src="/js/app.js"></script>
 </body>
 </html>
