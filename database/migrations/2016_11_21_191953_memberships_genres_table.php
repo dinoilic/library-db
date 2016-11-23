@@ -16,7 +16,7 @@ class MembershipsGenresTable extends Migration
         Schema::create('memberships', function (Blueprint $table) {
             $table->increments('id');
             $table->date('start_date');
-            $table->integer('days_membership');
+            $table->date('end_date');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

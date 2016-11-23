@@ -19,7 +19,8 @@ class CreateBookUserPivotTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->primary(['book_id', 'user_id']);
             $table->date('date_loaned');
-            $table->integer('days_loaned');
+            $table->date('date_return');
+            $table->date('date_returned')->nullable();
         });
     }
 

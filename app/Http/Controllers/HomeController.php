@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Membership;
+use App\User;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $memberships = Auth::user()->memberships()->orderBy('start_date', 'DESC')->limit(5)->get();
+        return view('home', compact('memberships'));
     }
 }

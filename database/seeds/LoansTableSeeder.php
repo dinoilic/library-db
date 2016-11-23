@@ -16,7 +16,7 @@ class LoansTableSeeder extends Seeder
             'book_id' => '1',
             'user_id' => '5',
             'date_loaned' => '2016-11-15',
-            'days_loaned' => '30',
+            'date_return' => '2016-12-15',
         ]);
     }
 }
