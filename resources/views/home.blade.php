@@ -7,12 +7,13 @@
     <div class="row">
         <div class="col-md-6">
             @if(Auth::user()->hasRole('member'))
-                <h3>Vaše članarine: {{ $memberships->count() }}</h3>
+                <h2>Vaše članarine: {{ $memberships->count() }}</h2>
                 <table class="table table-bordered table-striped">
                     <tr>
                         <th>Pocetni datum</th>
                         <th>Krajnji datum</th>
                         <th>Stanje</th>
+                        <th>Broj knjiga</th>
                     </tr>
                     @foreach($memberships as $membership)
                     <tr>
@@ -25,13 +26,32 @@
                             <span class="fa fa-times red"></span> Članstvo je isteklo
                         @endif
                         </td>
+                        <td>{{ $membership->books }}</td>
                     </tr>
                     @endforeach
                 </table>
             @endif
         </div>
         <div class="col-md-6">
-            Test
+            @if(Auth::user()->hasRole('member'))
+                test
+            @endif
         </div>
     </div>
+    @if(Auth::user()->hasRole('member'))
+        <div class="row">
+            <div class="col-md-12">
+                    <h2>Knjige koje ste posudili</h2>
+            </div>
+        </div>
+        <div class="row">
+            @foreach($books as $book)
+            <div class="col-md-3 text-center book">
+                <img src="http://covers.openlibrary.org/b/isbn/{{ $book->isbn }}-M.jpg" alt="Cover za knjigu {{ $book->name }}">
+                <h4>{{ $book->name }}</h4>
+                <p>Rok vracanja: {{ $book->pivot->date_return }}</p>
+            </div>
+            @endforeach
+        </div>
+    @endif
 @endsection

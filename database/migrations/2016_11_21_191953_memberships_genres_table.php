@@ -17,6 +17,7 @@ class MembershipsGenresTable extends Migration
             $table->increments('id');
             $table->date('start_date');
             $table->date('end_date');
+            $table->integer('books')->default(3);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
