@@ -31,9 +31,9 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
                     @if(Auth::check())
-                        <li class="active"><a href="{{ url('home') }}">Pocetna</a></li>
+                        <li><a href="{{ url('home') }}">Pocetna</a></li>
                         @if(Auth::user()->hasRole('member'))
-                            <li><a href="#">Knjige</a></li>
+                            <li><a href="{{ url('book') }}">Knjige</a></li>
                         @endif
                     @endif
                 </ul>

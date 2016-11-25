@@ -8,6 +8,7 @@
         <div class="col-md-6">
             @if(Auth::user()->hasRole('member'))
                 <h2>Vaše članarine: {{ $memberships->count() }}</h2>
+                <hr>
                 <table class="table table-bordered table-striped">
                     <tr>
                         <th>Pocetni datum</th>
@@ -20,7 +21,7 @@
                         <td>{{ $membership->start_date }}</td>
                         <td>{{ $membership->end_date }}</td>
                         <td>
-                        @if(Carbon\Carbon::now()->between(Carbon\Carbon::createFromFormat('Y-m-d', $membership->start_date)->startOfDay(), Carbon\Carbon::createFromFormat('Y-m-d', $membership->end_date)->startOfDay()))
+                        @if($membership->is_valid)
                             <span class="fa fa-check green"></span> Članstvo vrijedi
                         @else
                             <span class="fa fa-times red"></span> Članstvo je isteklo
@@ -42,6 +43,7 @@
         <div class="row">
             <div class="col-md-12">
                     <h2>Knjige koje ste posudili</h2>
+                    <hr>
             </div>
         </div>
         <div class="row">
