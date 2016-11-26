@@ -3,20 +3,31 @@
 @section('content')
     <div class="row">
         <div class="col-md-3">
-            <h3>Filteri</h3>
-            <hr>
-            <h4>Autori</h4>
-            <ul>
+            <form action="{{ url('book') }}" method="GET">
+                {{ csrf_field() }}
+                <h3>Filteri</h3>
+                <hr>
+                <h4>Autori</h4>
                 @foreach($authors as $author)
-                    <li>{{ $author->first_name }} {{ $author->last_name }}</li>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="author[]" value="{{ $author->id }}">
+                            {{ $author->first_name }} {{ $author->last_name }}
+                        </label>
+                    </div>
                 @endforeach
-            </ul>
-            <h4>Zanrovi</h4>
-            <ul>
+
+                <h4>Zanrovi</h4>
                 @foreach($genres as $genre)
-                    <li>{{ $genre->display_name }}</li>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="genre[]" value="{{ $genre->id }}">
+                            {{ $genre->display_name }}
+                        </label>
+                    </div>
                 @endforeach
-            </ul>
+                <button type="submit" class="btn btn-primary">Pretrazi</button>
+            </form>
         </div>
         <div class="col-md-9">
             <h3>Knjige</h3>
@@ -28,11 +39,11 @@
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">{{ $book->name }}</h4>
-                        <p>{{ str_limit($book->description, 500) }}</p>
+                        <hr>
+                        <p class="text-justify">{{ str_limit($book->description, 500) }}</p>
                     </div>
                 </div>
             @endforeach
-            {{ $books->links() }}
         </div>
     </div>
 @endsection

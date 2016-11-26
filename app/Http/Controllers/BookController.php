@@ -14,12 +14,50 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $books = Book::paginate(5);
         $authors = Author::all();
         $genres = Genre::all();
+
+        $author_ids = $request->input('author');
+        $genre_ids = $request->input('genre');
+
+        if(isset($author_ids) && isset($genre_ids))
+        {
+            $books = \DB::table('books')
+                    ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
+                    ->join('author_book', 'books.id', '=', 'author_book.book_id')
+                    ->where('genre_id', $genre_ids)
+                    ->where('author_id', $author_ids)
+                    ->select('name', 'description', 'isbn')
+                    ->distinct()
+                    ->get();
+        }
+        else if(isset($author_ids))
+        {
+            $books = \DB::table('books')
+                    ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
+                    ->join('author_book', 'books.id', '=', 'author_book.book_id')
+                    ->where('author_id', $author_ids)
+                    ->select('name', 'description', 'isbn')
+                    ->distinct()
+                    ->get();
+        }
+        else if(isset($genre_ids))
+        {
+            $books = \DB::table('books')
+                    ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
+                    ->join('author_book', 'books.id', '=', 'author_book.book_id')
+                    ->where('genre_id', $genre_ids)
+                    ->select('name', 'description', 'isbn')
+                    ->distinct()
+                    ->get();
+        }
+        else
+        {
+            $books = Book::all();
+        }
 
         return view('books', compact('books', 'authors', 'genres'));
     }
