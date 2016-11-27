@@ -54,5 +54,32 @@ class BooksTableSeeder extends Seeder
             'genre_id' => '5',
             'book_id' => '2',
         ]);
+
+        // Book 1
+        DB::table('books')->insert([
+            'name' => 'The Casual Vacancy',
+            'isbn' => '9780316228558',
+            'description' => 'When Barry Fairbrother dies in his early forties, the town of Pagford is left in shock. Pagford is, seemingly, an English idyll, with a cobbled market square and an ancient abbey, but what lies behind the pretty façade is a town at war. Rich at war with poor, teenagers at war with their parents, wives at war with their husbands, teachers at war with their pupils ... Pagford is not what it first seems. And the empty seat left by Barry on the parish council soon becomes the catalyst for the biggest war the town has yet seen. Who will triumph in an election fraught with passion, duplicity and unexpected revelations?',
+        ]);
+
+        DB::table('author_book')->insert([
+            'author_id' => '1',
+            'book_id' => '3',
+        ]);
+
+        DB::table('book_genre')->insert([
+            'genre_id' => '1',
+            'book_id' => '3',
+        ]);
+
+        DB::table('book_genre')->insert([
+            'genre_id' => '10',
+            'book_id' => '3',
+        ]);
+
+        DB::table('book_genre')->insert([
+            'genre_id' => '11',
+            'book_id' => '3',
+        ]);
     }
 }

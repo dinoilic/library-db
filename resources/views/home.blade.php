@@ -14,7 +14,7 @@
                         <th>Pocetni datum</th>
                         <th>Krajnji datum</th>
                         <th>Stanje</th>
-                        <th>Broj knjiga</th>
+                        <th>Moguce posuditi</th>
                     </tr>
                     @foreach($memberships as $membership)
                     <tr>

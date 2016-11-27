@@ -9,7 +9,17 @@ use App\Genre;
 
 class BookController extends Controller
 {
-    /**::paginate(6)
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -20,43 +30,21 @@ class BookController extends Controller
         $authors = Author::all();
         $genres = Genre::all();
 
-        $author_ids = $request->input('author');
-        $genre_ids = $request->input('genre');
+        $genre = $request->input('genre');
 
-        if(isset($author_ids) && isset($genre_ids))
+        if(isset($genre))
         {
-            $books = \DB::table('books')
-                    ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
-                    ->join('author_book', 'books.id', '=', 'author_book.book_id')
-                    ->where('genre_id', $genre_ids)
-                    ->where('author_id', $author_ids)
-                    ->select('name', 'description', 'isbn')
-                    ->distinct()
-                    ->get();
-        }
-        else if(isset($author_ids))
-        {
-            $books = \DB::table('books')
-                    ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
-                    ->join('author_book', 'books.id', '=', 'author_book.book_id')
-                    ->where('author_id', $author_ids)
-                    ->select('name', 'description', 'isbn')
-                    ->distinct()
-                    ->get();
-        }
-        else if(isset($genre_ids))
-        {
-            $books = \DB::table('books')
-                    ->join('book_genre', 'books.id', '=', 'book_genre.book_id')
-                    ->join('author_book', 'books.id', '=', 'author_book.book_id')
-                    ->where('genre_id', $genre_ids)
-                    ->select('name', 'description', 'isbn')
-                    ->distinct()
-                    ->get();
+            $books = Genre::where('name', $genre)->first()->books()->paginate(5);
         }
         else
         {
-            $books = Book::all();
+            $books = Book::paginate(5);
+        }
+
+        foreach($books as $book)
+        {
+            $loaned_books = $book->users()->whereNull('date_returned')->count();
+            $book->available = $book->copies - $loaned_books;
         }
 
         return view('books', compact('books', 'authors', 'genres'));

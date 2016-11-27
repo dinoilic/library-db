@@ -20,7 +20,7 @@ class Book extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\User')->withPivot('date_loaned', 'date_return', 'date_returned');;
+        return $this->belongsToMany('App\User')->withPivot('date_loaned', 'date_return', 'date_returned');
     }
 }
 

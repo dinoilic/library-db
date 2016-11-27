@@ -18,6 +18,7 @@ class BooksGenresTable extends Migration
             $table->string('name');
             $table->string('isbn');
             $table->text('description');
+            $table->integer('copies')->default(3);
             $table->timestamps();
         });
     }

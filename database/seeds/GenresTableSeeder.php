@@ -56,5 +56,15 @@ class GenresTableSeeder extends Seeder
             'name' => 'short-story',
             'display_name' => 'Short Story',
         ]);
+
+        DB::table('genres')->insert([
+            'name' => 'contemporary',
+            'display_name' => 'Contemporary',
+        ]);
+
+        DB::table('genres')->insert([
+            'name' => 'mystery',
+            'display_name' => 'Mystery',
+        ]);
     }
 }

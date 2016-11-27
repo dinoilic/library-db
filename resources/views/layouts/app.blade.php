@@ -49,7 +49,7 @@
                             <a href="{{ url('/logout') }}" 
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                                Odjava
+                                {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} | Odjava
                             </a>
                             <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none">
                                 {{ csrf_field() }}
