@@ -27,7 +27,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $memberships = Auth::user()->memberships()->orderBy('start_date', 'DESC')->limit(5)->get();
+        // Get 5 most recent memberships
+        $memberships = Auth::user()
+                                ->memberships()
+                                ->orderBy('start_date', 'DESC')
+                                ->limit(5)
+                                ->get();
+
         foreach($memberships as $membership)
         {
             $membership->is_valid = Carbon::now()->between(Carbon::createFromFormat('Y-m-d', $membership->start_date)->startOfDay(), Carbon::createFromFormat('Y-m-d', $membership->end_date)->startOfDay());
@@ -39,7 +45,11 @@ class HomeController extends Controller
         }
 
 
-        $books = Auth::user()->loans()->orderBy('date_loaned', 'DESC')->whereNull('date_returned')->get();
+        $books = Auth::user()
+                        ->loans()
+                        ->orderBy('date_loaned', 'DESC')
+                        ->whereNull('date_returned')
+                        ->get();
 
         return view('home', compact('memberships', 'books'));
 

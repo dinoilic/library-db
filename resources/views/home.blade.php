@@ -35,7 +35,8 @@
         </div>
         <div class="col-md-6">
             @if(Auth::user()->hasRole('member'))
-                test
+                <h2>Statistika</h2>
+                <hr>
             @endif
         </div>
     </div>
@@ -48,7 +49,7 @@
         </div>
         <div class="row">
             @foreach($books as $book)
-            <div class="col-md-3 text-center book">
+            <div class="col-md-4 text-center book">
                 <img src="http://covers.openlibrary.org/b/isbn/{{ $book->isbn }}-M.jpg" alt="Cover za knjigu {{ $book->name }}">
                 <h4>{{ $book->name }}</h4>
                 <p>Rok vracanja: {{ $book->pivot->date_return }}</p>
