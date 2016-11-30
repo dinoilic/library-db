@@ -33,7 +33,7 @@ class BooksTableSeeder extends Seeder
             'book_id' => '1',
         ]);
 
-        // Book 1
+        // Book 2
         DB::table('books')->insert([
             'name' => 'Harry Potter and the Chamber of Secrets',
             'isbn' => '9780439064866',
@@ -55,7 +55,7 @@ class BooksTableSeeder extends Seeder
             'book_id' => '2',
         ]);
 
-        // Book 1
+        // Book 3
         DB::table('books')->insert([
             'name' => 'The Casual Vacancy',
             'isbn' => '9780316228558',
@@ -80,6 +80,28 @@ class BooksTableSeeder extends Seeder
         DB::table('book_genre')->insert([
             'genre_id' => '11',
             'book_id' => '3',
+        ]);
+
+        // Book 4
+        DB::table('books')->insert([
+            'name' => 'The Mysterious Affair at Styles',
+            'isbn' => '9780060593582',
+            'description' => 'Christie’s first published novel, The Mysterious Affair at Styles is notable for introducing many of the character types, plot twists, and red herrings that would become commonplace during the Golden Age of Detective Fiction. Set in a remote country manor with a small handful of suspects, The Mysterious Affair at Styles is the quintessential detective story and remains one of the most significant literary works in the mystery genre.',
+        ]);
+
+        DB::table('author_book')->insert([
+            'author_id' => '2',
+            'book_id' => '4',
+        ]);
+
+        DB::table('book_genre')->insert([
+            'genre_id' => '11',
+            'book_id' => '4',
+        ]);
+
+        DB::table('book_genre')->insert([
+            'genre_id' => '4',
+            'book_id' => '4',
         ]);
     }
 }
