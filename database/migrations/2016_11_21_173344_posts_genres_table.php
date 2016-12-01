@@ -18,7 +18,7 @@ class PostsGenresTable extends Migration
             $table->string('post_title');
             $table->text('post_body');
             $table->integer('author_id')->unsigned();
-            $table->foreign('author_id')->references('id')->on('users');
+            $table->foreign('author_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

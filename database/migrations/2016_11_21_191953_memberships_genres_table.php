@@ -19,7 +19,7 @@ class MembershipsGenresTable extends Migration
             $table->date('end_date');
             $table->integer('books')->default(3);
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

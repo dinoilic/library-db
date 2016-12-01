@@ -17,7 +17,7 @@
 </head>
 <body>
     <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
+        <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -43,7 +43,7 @@
                             <li><a href="#">Zaposlenik</a></li>
                         @endif
                         @if(Auth::user()->hasRole('admin'))
-                            <li><a href="#">Administrator</a></li>
+                            <li><a href="{{ url('user') }}">Korisnici</a></li>
                         @endif
                         <li>
                             <a href="{{ url('/logout') }}" 

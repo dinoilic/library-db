@@ -14,9 +14,9 @@ class CreateBookGenrePivotTable extends Migration
     {
         Schema::create('book_genre', function (Blueprint $table) {
             $table->integer('book_id')->unsigned()->index();
-            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+            $table->foreign('book_id')->references('id')->on('books')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('genre_id')->unsigned()->index();
-            $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade');
+            $table->foreign('genre_id')->references('id')->on('genres')->onUpdate('cascade')->onDelete('cascade');
             $table->primary(['book_id', 'genre_id']);
         });
     }
