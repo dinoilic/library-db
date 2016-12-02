@@ -43,5 +43,18 @@ class AuthorsTableSeeder extends Seeder
             'dob' => '1893-07-07',
             'dod' => '1981-12-29',
         ]);
+
+        DB::table('authors')->insert([
+            'first_name' => 'George',
+            'last_name' => 'Martin',
+            'dob' => '1948-09-20',
+        ]);
+
+        DB::table('authors')->insert([
+            'first_name' => 'John',
+            'last_name' => 'Tolkien',
+            'dob' => '1892-01-03',
+            'dod' => '1973-09-02',
+        ]);
     }
 }

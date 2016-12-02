@@ -88,5 +88,68 @@ class UserTableSeeder extends Seeder
             'email' => 'bozidarka.dujmovic@gmail.com',
             'password' => bcrypt('12345'),
         ]);
+
+        DB::table('users')->insert([
+            'first_name' => 'Kostela',
+            'last_name' => 'Granić',
+            'email' => 'kostela.granic@gmail.com',
+            'password' => bcrypt('12345'),
+        ]);
+
+        DB::table('users')->insert([
+            'first_name' => 'Jurica',
+            'last_name' => 'Tućak',
+            'email' => 'jurica.tucak@gmail.com',
+            'password' => bcrypt('12345'),
+        ]);
+
+        DB::table('users')->insert([
+            'first_name' => 'Vilibor',
+            'last_name' => 'Hrastek',
+            'email' => 'vilibor.hrastek@gmail.com',
+            'password' => bcrypt('12345'),
+        ]);
+
+        DB::table('users')->insert([
+            'first_name' => 'Marica',
+            'last_name' => 'Kosić',
+            'email' => 'marica.kosic@gmail.com',
+            'password' => bcrypt('12345'),
+        ]);
+
+        DB::table('users')->insert([
+            'first_name' => 'Leonora',
+            'last_name' => 'Nakiri',
+            'email' => 'leonora.nakiri@gmail.com',
+            'password' => bcrypt('12345'),
+        ]);
+
+        DB::table('users')->insert([
+            'first_name' => 'Ozren',
+            'last_name' => 'Šantičić',
+            'email' => 'ozren.santicic@gmail.com',
+            'password' => bcrypt('12345'),
+        ]);
+
+        DB::table('users')->insert([
+            'first_name' => 'Dragica',
+            'last_name' => 'Babuškić',
+            'email' => 'dragica.babuskic@gmail.com',
+            'password' => bcrypt('12345'),
+        ]);
+
+        DB::table('users')->insert([
+            'first_name' => 'Grozdana',
+            'last_name' => 'Som',
+            'email' => 'grozdana.som@gmail.com',
+            'password' => bcrypt('12345'),
+        ]);
+
+        DB::table('users')->insert([
+            'first_name' => 'Petar',
+            'last_name' => 'Štrudlić',
+            'email' => 'petar.strudlic@gmail.com',
+            'password' => bcrypt('12345'),
+        ]);
     }
 }

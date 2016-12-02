@@ -16,7 +16,7 @@ class RoleUserTableSeeder extends Seeder
             'user_id' => '1',
             'role_id' => '1',
         ]);
-        
+
         DB::table('role_user')->insert([
             'user_id' => '2',
             'role_id' => '1',
@@ -64,6 +64,51 @@ class RoleUserTableSeeder extends Seeder
 
         DB::table('role_user')->insert([
             'user_id' => '11',
+            'role_id' => '3',
+        ]);
+
+        DB::table('role_user')->insert([
+            'user_id' => '12',
+            'role_id' => '3',
+        ]);
+
+        DB::table('role_user')->insert([
+            'user_id' => '13',
+            'role_id' => '3',
+        ]);
+
+        DB::table('role_user')->insert([
+            'user_id' => '14',
+            'role_id' => '3',
+        ]);
+
+        DB::table('role_user')->insert([
+            'user_id' => '15',
+            'role_id' => '3',
+        ]);
+
+        DB::table('role_user')->insert([
+            'user_id' => '16',
+            'role_id' => '3',
+        ]);
+
+        DB::table('role_user')->insert([
+            'user_id' => '17',
+            'role_id' => '3',
+        ]);
+
+        DB::table('role_user')->insert([
+            'user_id' => '18',
+            'role_id' => '3',
+        ]);
+
+        DB::table('role_user')->insert([
+            'user_id' => '19',
+            'role_id' => '3',
+        ]);
+
+        DB::table('role_user')->insert([
+            'user_id' => '20',
             'role_id' => '3',
         ]);
     }

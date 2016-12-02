@@ -59,5 +59,59 @@ class MembershipsTableSeeder extends Seeder
             'end_date' => '2016-12-10',
             'user_id' => '11',
         ]);
+
+        DB::table('memberships')->insert([
+            'start_date' => '2016-12-02',
+            'end_date' => '2017-01-02',
+            'user_id' => '12',
+        ]);
+
+        DB::table('memberships')->insert([
+            'start_date' => '2016-12-02',
+            'end_date' => '2017-01-02',
+            'user_id' => '13',
+        ]);
+
+        DB::table('memberships')->insert([
+            'start_date' => '2016-12-02',
+            'end_date' => '2017-01-02',
+            'user_id' => '14',
+        ]);
+
+        DB::table('memberships')->insert([
+            'start_date' => '2016-12-02',
+            'end_date' => '2017-01-02',
+            'user_id' => '15',
+        ]);
+
+        DB::table('memberships')->insert([
+            'start_date' => '2016-12-02',
+            'end_date' => '2017-01-02',
+            'user_id' => '16',
+        ]);
+
+        DB::table('memberships')->insert([
+            'start_date' => '2016-12-02',
+            'end_date' => '2017-01-02',
+            'user_id' => '17',
+        ]);
+
+        DB::table('memberships')->insert([
+            'start_date' => '2016-12-02',
+            'end_date' => '2017-01-02',
+            'user_id' => '18',
+        ]);
+
+        DB::table('memberships')->insert([
+            'start_date' => '2016-12-02',
+            'end_date' => '2017-01-02',
+            'user_id' => '19',
+        ]);
+
+        DB::table('memberships')->insert([
+            'start_date' => '2016-12-02',
+            'end_date' => '2017-01-02',
+            'user_id' => '20',
+        ]);
     }
 }
