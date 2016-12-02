@@ -11,7 +11,7 @@
             <h2>Kratki pregled - korisnik</h2>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                     <h2>Vaše članarine: {{ $memberships->count() }}</h2>
                     <hr>
                     <table class="table table-bordered table-striped">
@@ -37,15 +37,11 @@
                         @endforeach
                     </table>
             </div>
-            <div class="col-md-6">
-                    <h2>Statistika</h2>
-                    <hr>
-            </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                    <h2>Knjige koje ste posudili</h2>
-                    <hr>
+                <h2>Knjige koje ste posudili</h2>
+                <hr>
             </div>
         </div>
         <div class="row">

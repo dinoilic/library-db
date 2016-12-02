@@ -19,3 +19,5 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('/book', 'BookController');
 Route::resource('/user', 'UserController');
+Route::resource('/membership', 'MembershipController');
+Route::resource('/loan', 'LoanController');

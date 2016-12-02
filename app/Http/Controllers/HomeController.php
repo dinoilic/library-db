@@ -31,7 +31,7 @@ class HomeController extends Controller
         $memberships = Auth::user()
                                 ->memberships()
                                 ->orderBy('start_date', 'DESC')
-                                ->limit(5)
+                                ->limit(10)
                                 ->get();
 
         foreach($memberships as $membership)

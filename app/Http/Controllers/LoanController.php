@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Book;
-use App\Author;
-use App\Genre;
 
-class BookController extends Controller
+class LoanController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -17,6 +14,7 @@ class BookController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:employee');
     }
 
     /**
@@ -24,30 +22,9 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
-        $authors = Author::all();
-        $genres = Genre::all();
-
-        $genre = $request->input('genre');
-
-        if(isset($genre))
-        {
-            $books = Genre::where('name', $genre)->first()->books()->paginate(5);
-        }
-        else
-        {
-            $books = Book::paginate(5);
-        }
-
-        foreach($books as $book)
-        {
-            $loaned_books = $book->users()->whereNull('date_returned')->count();
-            $book->available = $book->copies - $loaned_books;
-        }
-
-        return view('books.index', compact('books', 'authors', 'genres'));
     }
 
     /**

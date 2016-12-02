@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-6">
             <h3>Informacije o korisniku</h3>
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -41,11 +41,13 @@
     <div class="row">
         <div class="col-md-12">
             <h3>Uloge</h3>
-            <ul>
+            <div class="list-group">
                 @foreach($user->roles as $role)
-                    <li>{{ $role->display_name }}</li>
+                    <div class="list-group-item">
+                        {{ $role->display_name }}
+                    </div>
                 @endforeach
-            </ul>
+            </div>
         </div>
     </div>
 @endsection

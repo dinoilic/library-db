@@ -32,7 +32,8 @@
     <!-- JavaScript Files -->
     <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
-    @yield('scripts')
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+    
 </head>
 <body>
     <nav class="navbar navbar-default" role="navigation">
@@ -59,7 +60,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     @if(Auth::check())
                         @if(Auth::user()->hasRole('employee'))
-                            <li><a href="#">Zaposlenik</a></li>
+                            <li><a href="{{ route('membership.index') }}">Clanarine</a></li>
+                            <li><a href="{{ route('loan.index') }}">Posudbe</a></li>
                         @endif
                         @if(Auth::user()->hasRole('admin'))
                             <li><a href="{{ url('user') }}">Korisnici</a></li>
@@ -86,4 +88,5 @@
         @yield('content')
     </div>
 </body>
+@yield('scripts')
 </html>
