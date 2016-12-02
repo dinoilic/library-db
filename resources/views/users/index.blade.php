@@ -4,7 +4,9 @@
     <div class="page-header">
         <h1>Informacije o korisnicima</h1>
     </div>
-
+    <div class="list-group">
+        <a href="{{ route('user.create') }}" class="list-group-item"><span class="fa fa-plus"></span> Dodaj novog korisnika</a>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <table class="table table-bordered table-hover">

@@ -32,6 +32,7 @@ class UserController extends Controller
         return view('users.index', compact('allUsers'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -40,9 +41,7 @@ class UserController extends Controller
     public function create()
     {
         //
-        $allRoles = Role::all();
-
-        return view('users.create', compact('allRoles'));
+        return view('users.create');
     }
 
     /**
@@ -54,6 +53,17 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $user = new User();
+
+        $user->first_name = $request->input('firstName');
+        $user->last_name = $request->input('lastName');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
+        
+        $user->attachRole(3);
+
+        return redirect()->route('user.index');
     }
 
     /**
@@ -66,8 +76,9 @@ class UserController extends Controller
     {
         //
         $user = User::findOrFail($id);
+        $roles = Role::all();
 
-        return view('users.show', compact('user'));
+        return view('users.show', compact('user', 'roles'));
     }
 
     /**
