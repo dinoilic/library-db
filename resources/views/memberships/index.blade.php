@@ -7,7 +7,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ route('membership.create') }}" class="btn btn-block btn-info"><span class="fa fa-plus"></span> Dodaj novu clanarinu za</a>
+            <a href="{{ route('membership.create') }}" class="btn btn-block btn-info"><span class="fa fa-plus"></span> Dodaj novu clanarinu</a>
         </div>
     </div>
     <hr>

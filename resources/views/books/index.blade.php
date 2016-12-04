@@ -19,7 +19,13 @@
             </form>
         </div>
         <div class="col-md-9">
-            <h3>Knjige</h3>
+            <h3>Knjige
+            @if(Auth::user()->hasRole('employee'))
+                <small>
+                    <span class="pull-right"><a href="{{ route('book.create') }}"><span class="fa fa-plus"></span> Dodaj knjigu</a></span>
+                </small>
+            @endif
+            </h3>
             <hr>
             @foreach($books as $book)
                 <div class="media">
@@ -27,7 +33,8 @@
                         <img class="media-object" src="http://covers.openlibrary.org/b/isbn/{{ $book->isbn }}-M.jpg">
                     </div>
                     <div class="media-body">
-                        <h4 class="media-heading">{{ $book->name }} <span class="pull-right">
+                        <h4 class="media-heading"><a href="{{ route('book.show', ['id' => $book->id]) }}">{{ $book->name }}</a>
+                        <span class="pull-right">
                         @if($book->available > 0)
                             <span class="fa fa-check green"></span> Dostupno
                         @else

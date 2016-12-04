@@ -17,6 +17,7 @@ class BookController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:member|employee');
     }
 
     /**
@@ -58,6 +59,10 @@ class BookController extends Controller
     public function create()
     {
         //
+        $authors = Author::all();
+        $genres = Genre::all();
+
+        return view('books.create', compact('authors', 'genres'));
     }
 
     /**
@@ -69,6 +74,27 @@ class BookController extends Controller
     public function store(Request $request)
     {
         //
+        $book = new Book();
+        $book->name = $request->input('name');
+        $book->isbn = $request->input('isbn');
+        $book->description = $request->input('description');
+
+        $book->save();
+        
+        // Attaching new ones
+        foreach($request->input('authors') as $author)
+        {
+            $book->authors()->attach($author);
+        }
+
+        // Attaching new genres
+        foreach($request->input('genres') as $genre)
+        {
+            $book->genres()->attach($genre);
+            
+        }
+
+        return redirect()->route('book.show', ['id' => $book->id]);
     }
 
     /**
@@ -80,6 +106,11 @@ class BookController extends Controller
     public function show($id)
     {
         //
+        $book = Book::findOrFail($id);
+        $authors = $book->authors()->get();
+        $genres = $book->genres()->get();
+
+        return view('books.show', compact('book', 'authors', 'genres'));
     }
 
     /**
@@ -91,6 +122,11 @@ class BookController extends Controller
     public function edit($id)
     {
         //
+        $book = Book::findOrFail($id);
+        $authors = Author::all();
+        $genres = Genre::all();
+
+        return view('books.edit', compact('book', 'authors', 'genres'));
     }
 
     /**
@@ -103,6 +139,37 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $book = Book::findOrFail($id);
+        $book->name = $request->input('name');
+        $book->isbn = $request->input('isbn');
+        $book->description = $request->input('description');
+
+        $book->save();
+
+        // Detaching all authors
+        foreach($book->authors()->get() as $author)
+        {
+            $book->authors()->detach($author);
+        }
+        // Attaching new ones
+        foreach($request->input('authors') as $author)
+        {
+            $book->authors()->attach($author);
+        }
+
+        // Detaching all genres
+        foreach($book->genres()->get() as $genre)
+        {
+            $book->genres()->detach($genre);
+        }
+        // Attaching new genres
+        foreach($request->input('genres') as $genre)
+        {
+            $book->genres()->attach($genre);
+            
+        }
+
+        return redirect()->route('book.show', ['id' => $id]);
     }
 
     /**
@@ -114,5 +181,8 @@ class BookController extends Controller
     public function destroy($id)
     {
         //
+        Book::destroy($id);
+
+        return redirect()->route('book.index');
     }
 }

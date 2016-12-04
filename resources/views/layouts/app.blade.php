@@ -53,7 +53,7 @@
                     @if(Auth::check())
                         <li><a href="{{ url('home') }}">Pocetna</a></li>
                         @if(Auth::user()->hasRole('member'))
-                            <li><a href="{{ url('book') }}">Knjige</a></li>
+                            <li><a href="{{ route('book.index') }}">Knjige</a></li>
                         @endif
                     @endif
                 </ul>
@@ -62,6 +62,7 @@
                         @if(Auth::user()->hasRole('employee'))
                             <li><a href="{{ route('membership.index') }}">Clanarine</a></li>
                             <li><a href="{{ route('loan.index') }}">Posudbe</a></li>
+                            <li><a href="{{ route('book.index') }}">Knjige</a></li>
                         @endif
                         @if(Auth::user()->hasRole('admin'))
                             <li><a href="{{ url('user') }}">Korisnici</a></li>

@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="page-header">
-        <h1>Clan: <small>{{ $user->first_name }} {{ $user->last_name }}</small></h1>
-        <h1>Clanarina: <small>od {{ $membership->start_date }} do {{ $membership->end_date }}</small></h1>
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Clan: <small>{{ $user->first_name }} {{ $user->last_name }}</small></h1>
+        </div>
+        <div class="col-md-6">
+            <h1>Clanarina: <small>od {{ $membership->start_date }} do {{ $membership->end_date }}</small></h1>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-6">
