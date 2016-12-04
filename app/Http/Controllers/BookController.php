@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Book;
 use App\Author;
 use App\Genre;
+use Auth;
 
 class BookController extends Controller
 {
@@ -59,6 +60,7 @@ class BookController extends Controller
     public function create()
     {
         //
+        if(!(Auth::user()->hasRole('employee'))) abort(404);
         $authors = Author::all();
         $genres = Genre::all();
 
@@ -122,6 +124,7 @@ class BookController extends Controller
     public function edit($id)
     {
         //
+        if(!(Auth::user()->hasRole('employee'))) abort(404);
         $book = Book::findOrFail($id);
         $authors = Author::all();
         $genres = Genre::all();
