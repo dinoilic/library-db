@@ -42,7 +42,7 @@ return [
     'filled'               => 'Polje :attribute je obavezno.',
     'image'                => ':attribute mora biti slika.',
     'in'                   => 'Odabrani :attribute je invalidan.',
-    'in_array'             => ':attribute polje ne postoji u :other.',
+    'in_array'             => 'Polje :attribute ne postoji u :other.',
     'integer'              => ':attribute mora biti integer.',
     'ip'                   => ':attribute mora biti validna IP adresa.',
     'json'                 => ':attribute mora biti validan JSON string.',
@@ -64,13 +64,13 @@ return [
     'numeric'              => ':attribute mora biti broj.',
     'present'              => 'Polje :attribute mora biti prisutno.',
     'regex'                => 'Format :attribute nije validan.',
-    'required'             => ':attribute polje je obavezno.',
-    'required_if'          => ':attribute polje je obavezno kada :other iznosi :value.',
-    'required_unless'      => ':attribute polje je obavezno osim ako je :other u :values.',
-    'required_with'        => ':attribute polje je obavezno kada :values je prisutno.',
-    'required_with_all'    => ':attribute polje je obavezno kada :values je prisutno.',
-    'required_without'     => ':attribute polje je obavezno kada :values nije prisutno.',
-    'required_without_all' => ':attribute polje je obavezno kada niti jedna od :values nije prisutna.',
+    'required'             => 'Polje :attribute je obavezno.',
+    'required_if'          => 'Polje :attribute je obavezno kada :other iznosi :value.',
+    'required_unless'      => 'Polje :attribute je obavezno osim ako je :other u :values.',
+    'required_with'        => 'Polje :attribute je obavezno kada :values je prisutno.',
+    'required_with_all'    => 'Polje :attribute je obavezno kada :values je prisutno.',
+    'required_without'     => 'Polje :attribute je obavezno kada :values nije prisutno.',
+    'required_without_all' => 'Polje :attribute je obavezno kada niti jedna od :values nije prisutna.',
     'same'                 => ':attribute i :other moraju biti jednaki.',
     'size'                 => [
         'numeric' => ':attribute mora iznosit :size.',
@@ -112,6 +112,11 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'email' => 'E-Mail adresa',
+        'firstName' => 'Ime',
+        'lastName' => 'Prezime',
+        'password' => 'Lozinka',
+    ],
 
 ];

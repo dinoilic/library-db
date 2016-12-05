@@ -5,7 +5,7 @@
         <h1>Informacije o korisnicima</h1>
     </div>
     <div class="list-group">
-        <a href="{{ route('user.create') }}" class="list-group-item"><span class="fa fa-plus"></span> Dodaj novog korisnika</a>
+        <a href="{{ route('user.create') }}" class="btn btn-primary btn-block"><span class="fa fa-plus"></span> Dodaj novog korisnika</a>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -26,11 +26,14 @@
                             <td>{{ $user->first_name }}</td>
                             <td>{{ $user->last_name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td><a href="{{ route('user.show', ['id' => $user->id]) }}"><span class="fa fa-info blue"></span></a></td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="{{ route('user.show', ['id' => $user->id]) }}">Uredi korisnika</a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            {{ $allUsers->links() }}
         </div>
     </div>
 @endsection

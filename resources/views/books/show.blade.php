@@ -9,18 +9,14 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <img class="media-object" src="http://covers.openlibrary.org/b/isbn/{{ $book->isbn }}-L.jpg">
+            <img class="media-object img-responsive" src="http://covers.openlibrary.org/b/isbn/{{ $book->isbn }}-L.jpg">
             @if(Auth::user()->hasRole('employee'))
                 <div class="list-group">
-                    <div class="list-group-item">
-                        <a href="{{ route('book.edit', ['id' => $book->id]) }}"><span class="fa fa-edit"></span> Uredi knjigu</a>
-                    </div>
-                    <div class="list-group-item">
-                        {{ Form::open(['method' => 'DELETE', 'route' => ['book.destroy', $book->id]]) }}
-                            {{ Form::hidden('id', $book->id) }}
-                            {{ Form::submit('Obrisi knjigu', ['class' => 'btn btn-block btn-danger']) }}
-                        {{ Form::close() }}
-                    </div>
+                    <a class="btn btn-primary btn-block" href="{{ route('book.edit', ['id' => $book->id]) }}"><span class="fa fa-edit"></span> Uredi knjigu</a>
+                    {{ Form::open(['method' => 'DELETE', 'route' => ['book.destroy', $book->id]]) }}
+                        {{ Form::hidden('id', $book->id) }}
+                        {{ Form::submit('Obrisi knjigu', ['class' => 'btn btn-block btn-danger']) }}
+                    {{ Form::close() }}
                 </div>
             @endif
         </div>  

@@ -29,10 +29,10 @@
         <div class="col-md-6">
             <h3>Opcije</h3>
             <div class="list-group">
-                <a href="{{ route('user.edit', ['id' => $user->id]) }}" class="list-group-item"><span class="fa fa-edit"></span> Uredi trenutnog korisnika</a>
+                <a href="{{ route('user.edit', ['id' => $user->id]) }}" class="btn btn-primary btn-block"><span class="fa fa-edit"></span> Uredi trenutnog korisnika</a>
                 {{ Form::open(['method' => 'DELETE', 'route' => ['user.destroy', $user->id]]) }}
                     {{ Form::hidden('id', $user->id) }}
-                    {{ Form::submit('Delete', ['class' => 'btn btn-block btn-danger']) }}
+                    {{ Form::submit('Obrisi korisnika', ['class' => 'btn btn-block btn-danger']) }}
                 {{ Form::close() }}
             </div>
         </div>
