@@ -36,7 +36,7 @@ class BookController extends Controller
 
         if(isset($genre))
         {
-            $books = Genre::where('name', $genre)->first()->books()->paginate(5);
+            $books = Genre::where('name', $genre)->firstOrFail()->books()->paginate(5);
         }
         else
         {
@@ -76,6 +76,13 @@ class BookController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'name' => 'required|max:255|unique:books',
+            'isbn' => 'required|between:10,13|unique:books',
+            'description' => 'required',
+            'authors' => 'required',
+            'genres' => 'required',
+        ]);
         $book = new Book();
         $book->name = $request->input('name');
         $book->isbn = $request->input('isbn');
@@ -142,6 +149,13 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'name' => 'required|max:255|unique:books,name,'.$id,
+            'isbn' => 'required|between:10,13|unique:books,isbn,'.$id,
+            'description' => 'required',
+            'authors' => 'required',
+            'genres' => 'required',
+        ]);
         $book = Book::findOrFail($id);
         $book->name = $request->input('name');
         $book->isbn = $request->input('isbn');

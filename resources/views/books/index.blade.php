@@ -50,7 +50,7 @@
                 </div>
                 <hr>
             @endforeach
-            {{ $books->links() }}
+            {{ $books->appends(request()->input())->links() }}
         </div>
     </div>
 @endsection

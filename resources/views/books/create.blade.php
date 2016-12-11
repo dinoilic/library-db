@@ -5,6 +5,14 @@
         <h1>Dodavanje nove knjige</h1>
     </div>
 
+    @if (count($errors) > 0)
+        @foreach ($errors->all() as $error)
+        <div class="alert alert-danger">
+            {{ $error }}
+        </div>
+        @endforeach
+    @endif
+
     <div class="row">
         <div class="col-md-12">
             {{ Form::open(['method' => 'POST', 'route' => ['book.store']]) }}

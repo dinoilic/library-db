@@ -65,6 +65,11 @@ class MembershipController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'startDate' => 'required|date|after:yesterday',
+            'endDate' => 'required|date|after:startDate',
+            'books' => 'numeric|between:3,10',
+        ]);
         $membership = new Membership();
 
         $membership->start_date = $request->input('startDate');
@@ -127,6 +132,11 @@ class MembershipController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'startDate' => 'required|date|after:yesterday',
+            'endDate' => 'required|date|after:startDate',
+            'books' => 'numeric|between:3,10',
+        ]);
         $membership = Membership::findOrFail($id);
 
         $membership->start_date = $request->input('startDate');

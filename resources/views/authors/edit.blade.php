@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h1>Kreiranje nove clanarine</h1>
+        <h1>Uredujete: <small>{{ $author->first_name }} {{ $author->last_name }}</small></h1>
     </div>
 
     @if (count($errors) > 0)
@@ -15,30 +15,29 @@
 
     <div class="row">
         <div class="col-md-12">
-            {{ Form::open(['method' => 'POST', 'route' => 'membership.store']) }}
+            {{ Form::open(['method' => 'PUT', 'route' => ['author.update', $author->id]]) }}
+                {{ Form::hidden('id', $author->id) }}
                 <div class="form-group">
-                    {{ Form::label('startDate', 'Datum pocetka clanarine') }}
-                    {{ Form::text('startDate', null, ['class' => 'form-control datepicker']) }}
+                    {{ Form::label('firstName', 'Ime') }}
+                    {{ Form::text('firstName', $author->first_name, ['class' => 'form-control']) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('endDate', 'Datum kraja clanarine') }}
-                    {{ Form::text('endDate', null, ['class' => 'form-control datepicker']) }}
+                    {{ Form::label('lastName', 'Prezime') }}
+                    {{ Form::text('lastName', $author->last_name, ['class' => 'form-control']) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('books', 'Knjiga za posuditi') }}
-                    {{ Form::text('books', null, ['class' => 'form-control']) }}
+                    {{ Form::label('dob', 'Datum rodenja') }}
+                    {{ Form::text('dob', $author->dob, ['class' => 'form-control datepicker']) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('name', 'Clan') }}
-                    <select class="form-control" name="userId">
-                        @foreach($allUsers as $user)
-                            @if($user->hasRole('member'))
-                                <option value="{{ $user->id }}">{{ $user->first_name }} {{ $user->last_name }}</option>
-                            @endif
-                        @endforeach
-                    </select>
+                    {{ Form::label('dod', 'Datum smrti') }}
+                    {{ Form::text('dod', $author->dod, ['class' => 'form-control datepicker']) }}
                 </div>
                 {{ Form::submit('Spremi', ['class' => 'btn btn-primary']) }}
+            {{ Form::close() }}
+            {{ Form::open(['method' => 'DELETE', 'route' => ['author.destroy', $author->id]]) }}
+                {{ Form::hidden('id', $author->id) }}
+                {{ Form::submit('Obrisi autora', ['class' => 'btn btn-danger']) }}
             {{ Form::close() }}
         </div>
     </div>

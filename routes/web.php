@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'WelcomeController@index')->name('main');;
 
 Auth::routes();
 
@@ -21,3 +21,4 @@ Route::resource('/book', 'BookController');
 Route::resource('/user', 'UserController');
 Route::resource('/membership', 'MembershipController');
 Route::resource('/loan', 'LoanController');
+Route::resource('/author', 'AuthorController');

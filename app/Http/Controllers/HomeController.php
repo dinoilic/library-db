@@ -29,10 +29,10 @@ class HomeController extends Controller
     {
         // Get 5 most recent memberships
         $memberships = Auth::user()
-                                ->memberships()
-                                ->orderBy('start_date', 'DESC')
-                                ->limit(10)
-                                ->get();
+                            ->memberships()
+                            ->orderBy('start_date', 'DESC')
+                            ->limit(10)
+                            ->get();
 
         foreach($memberships as $membership)
         {

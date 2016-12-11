@@ -98,6 +98,7 @@ return [
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
+            'now' => 'sada',
         ],
     ],
 
@@ -117,6 +118,16 @@ return [
         'firstName' => 'Ime',
         'lastName' => 'Prezime',
         'password' => 'Lozinka',
+        'dob' => 'Datum rođenja',
+        'dod' => 'Datum smrti',
+        'startDate' => 'Datum početka',
+        'endDate' => 'Datum kraja',
+        'books' => 'Broj knjiga',
+        'name' => 'Naziv knjige',
+        'description' => 'Opis knjige',
+        'isbn' => 'ISBN',
+        'authors' => 'Autori',
+        'genres' => 'Žanrovi',
     ],
 
 ];

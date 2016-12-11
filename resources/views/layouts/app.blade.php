@@ -60,9 +60,10 @@
                 <ul class="nav navbar-nav navbar-right">
                     @if(Auth::check())
                         @if(Auth::user()->hasRole('employee'))
+                            <li><a href="{{ route('author.index') }}">Autori</a></li>
                             <li><a href="{{ route('membership.index') }}">Clanarine</a></li>
-                            <li><a href="{{ route('loan.index') }}">Posudbe</a></li>
                             <li><a href="{{ route('book.index') }}">Knjige</a></li>
+                            <li><a href="{{ route('loan.index') }}">Posudbe</a></li>
                         @endif
                         @if(Auth::user()->hasRole('admin'))
                             <li><a href="{{ url('user') }}">Korisnici</a></li>

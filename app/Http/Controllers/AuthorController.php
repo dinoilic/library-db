@@ -3,22 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Role;
+use App\Author;
 
-class UserController extends Controller
+class AuthorController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('role:admin');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -27,11 +15,10 @@ class UserController extends Controller
     public function index()
     {
         //
-        $allUsers = User::paginate(10);
+        $authors = Author::paginate(10);
 
-        return view('users.index', compact('allUsers'));
+        return view('authors.index', compact('authors'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -41,7 +28,7 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('users.create');
+        return view('authors.create');
     }
 
     /**
@@ -56,20 +43,26 @@ class UserController extends Controller
         $this->validate($request, [
             'firstName' => 'required|max:255',
             'lastName' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6',
+            'dob' => 'required|date',
+            'dod' => 'date',
         ]);
-        $user = new User();
+        $author = new Author();
 
-        $user->first_name = $request->input('firstName');
-        $user->last_name = $request->input('lastName');
-        $user->email = $request->input('email');
-        $user->password = bcrypt($request->input('password'));
-        $user->save();
-        
-        $user->attachRole(3);
+        $author->first_name = $request->input('firstName');
+        $author->last_name = $request->input('lastName');
+        $author->dob = $request->input('dob');
+        if($request->input('dod') != null)
+        {
+            $author->dod = $request->input('dod');
+        }
+        else
+        {
+            $author->dod = null;
+        }
 
-        return redirect()->route('user.index');
+        $author->save();
+
+        return redirect()->route('author.index');
     }
 
     /**
@@ -81,10 +74,6 @@ class UserController extends Controller
     public function show($id)
     {
         //
-        $user = User::findOrFail($id);
-        $roles = Role::all();
-
-        return view('users.show', compact('user', 'roles'));
     }
 
     /**
@@ -96,10 +85,9 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        $user = User::findOrFail($id);
-        $roles = Role::all();
+        $author = Author::findOrFail($id);
 
-        return view('users.edit', compact('user', 'roles'));
+        return view('authors.edit', compact('author'));
     }
 
     /**
@@ -115,16 +103,26 @@ class UserController extends Controller
         $this->validate($request, [
             'firstName' => 'required|max:255',
             'lastName' => 'required|max:255',
-            'email' => 'required|email|max:255',
+            'dob' => 'required|date',
+            'dod' => 'date',
         ]);
-        $user = User::findOrFail($id);
+        $author = Author::findOrFail($id);
 
-        $user->first_name = $request->input('firstName');
-        $user->last_name = $request->input('lastName');
-        $user->email = $request->input('email');
-        $user->save();
+        $author->first_name = $request->input('firstName');
+        $author->last_name = $request->input('lastName');
+        $author->dob = $request->input('dob');
+        if($request->input('dod') != null)
+        {
+            $author->dod = $request->input('dod');
+        }
+        else
+        {
+            $author->dod = null;
+        }
 
-        return redirect()->route('user.index');
+        $author->save();
+
+        return redirect()->route('author.index');
     }
 
     /**
@@ -136,8 +134,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-        User::destroy($id);
+        Author::destroy($id);
 
-        return redirect()->route('user.index');
+        return redirect()->route('author.index');
     }
 }
