@@ -123,11 +123,14 @@ return [
         'startDate' => 'Datum početka',
         'endDate' => 'Datum kraja',
         'books' => 'Broj knjiga',
-        'name' => 'Naziv knjige',
+        'name' => 'Naziv',
         'description' => 'Opis knjige',
         'isbn' => 'ISBN',
         'authors' => 'Autori',
         'genres' => 'Žanrovi',
+        'displayName' => 'Naziv za prikaz',
+        'postTitle' => 'Naslov clanka',
+        'postBody' => 'Tekst clanka',
     ],
 
 ];

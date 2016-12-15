@@ -26,8 +26,8 @@
                             <td>{{ $user->first_name }}</td>
                             <td>{{ $user->last_name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>
-                                <a href="{{ route('user.show', ['id' => $user->id]) }}">Detalji o korisniku</a>
+                            <td class="button-table">
+                                <a class="btn btn-sm btn-primary" href="{{ route('user.show', ['id' => $user->id]) }}">Detalji o korisniku</a>
                             </td>
                         </tr>
                     @endforeach

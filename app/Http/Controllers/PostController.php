@@ -3,9 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use Auth;
 
 class PostController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('role:admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +26,9 @@ class PostController extends Controller
     public function index()
     {
         //
+        $posts = Post::paginate(10);
+
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -24,6 +39,7 @@ class PostController extends Controller
     public function create()
     {
         //
+        return view('posts.create');
     }
 
     /**
@@ -35,6 +51,18 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'postTitle' => 'required|max:255|unique:posts,post_title',
+            'postBody' => 'required',
+        ]);
+        $post = new Post();
+
+        $post->post_title = $request->input('postTitle');
+        $post->post_body = $request->input('postBody');
+        $post->author()->associate(Auth::user());
+        $post->save();
+
+        return redirect()->route('post.index');
     }
 
     /**
@@ -57,6 +85,9 @@ class PostController extends Controller
     public function edit($id)
     {
         //
+        $post = Post::findOrFail($id);
+
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -69,6 +100,17 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'postTitle' => 'required|max:255|unique:posts,post_title,'.$id,
+            'postBody' => 'required',
+        ]);
+        $post = Post::findOrFail($id);
+
+        $post->post_title = $request->input('postTitle');
+        $post->post_body = $request->input('postBody');
+        $post->save();
+        
+        return redirect()->route('post.index');
     }
 
     /**
@@ -80,5 +122,8 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+        Post::destroy($id);
+
+        return redirect()->route('post.index');
     }
 }
