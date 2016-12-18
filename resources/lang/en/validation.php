@@ -131,6 +131,7 @@ return [
         'displayName' => 'Naziv za prikaz',
         'postTitle' => 'Naslov clanka',
         'postBody' => 'Tekst clanka',
+        'loanLength' => 'Duljina posudbe',
     ],
 
 ];

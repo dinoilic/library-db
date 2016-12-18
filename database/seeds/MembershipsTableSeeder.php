@@ -14,13 +14,19 @@ class MembershipsTableSeeder extends Seeder
         //
         DB::table('memberships')->insert([
             'start_date' => '2016-11-10',
-            'end_date' => '2016-12-10',
+            'end_date' => Carbon\Carbon::parse('2016-11-10')->addMonth(1),
             'user_id' => '5',
         ]);
 
         DB::table('memberships')->insert([
             'start_date' => '2016-10-10',
             'end_date' => '2016-11-10',
+            'user_id' => '5',
+        ]);
+
+        DB::table('memberships')->insert([
+            'start_date' => '2016-12-10',
+            'end_date' => '2017-01-10',
             'user_id' => '5',
         ]);
 

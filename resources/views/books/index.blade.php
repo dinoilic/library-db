@@ -41,7 +41,13 @@
                             <span class="fa fa-times red"></span> Nije dostupno
                         @endif
                         </span></h4>
-                        <h5>Kopije: {{ $book->copies }}</h5>
+                        <h5>Kopije: {{ $book->copies }}
+                        <span class="pull-right">
+                        @if($book->available > 0)
+                            <a class="btn btn-sm btn-success" href="{{ route('loan.create', ['bookId' => $book->id]) }}">Posudi knjigu</a>
+                        @endif
+                        </span>
+                        </h5>
                         <h5>Dostupno kopija: {{ $book->available }}</h5>
                         <hr>
                         <h4>Opis knjige</h4>

@@ -21,6 +21,8 @@ Route::resource('/book', 'BookController');
 Route::resource('/user', 'UserController');
 Route::resource('/membership', 'MembershipController');
 Route::resource('/loan', 'LoanController');
+Route::get('/loan/{id}/return', 'LoanController@returnBook')->name('loan.return');
+Route::get('/loan/{id}/extend', 'LoanController@extendBook')->name('loan.extend');
 Route::resource('/author', 'AuthorController');
 Route::resource('/genre', 'GenreController');
 Route::resource('/post', 'PostController');

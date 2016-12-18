@@ -46,6 +46,6 @@ class User extends Authenticatable
 
     public function loans()
     {
-        return $this->belongsToMany('App\Book')->withPivot('date_loaned', 'date_return', 'date_returned');
+        return $this->belongsToMany('App\Book')->withPivot('id', 'date_loaned', 'date_return', 'date_returned');
     }
 }
