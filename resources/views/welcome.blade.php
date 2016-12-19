@@ -18,6 +18,9 @@
         </div>
     </div>
     <hr>
+    <div class="row">
+        {{ $posts->links() }}
+    </div>
     @foreach($posts as $post)
         <div class="row">
             <div class="col-md-12">

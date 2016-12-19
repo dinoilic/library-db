@@ -1,18 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="page-header">
-        <h1>Pozdrav <span class="user-name">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span></h1>
-    </div>
-
     {{-- Layout for members --}}
     @if(Auth::user()->hasRole('member'))
         <div class="page-header">
-            <h2>Kratki pregled - korisnik</h2>
+            <h3>Kratki pregled - korisnik</h3>
         </div>
         <div class="row">
             <div class="col-md-12">
-                    <h2>Vaše članarine: {{ $memberships->count() }}</h2>
+                    <h4>Vaše članarine: {{ $memberships->count() }}</h4>
                     <hr>
                     <table class="table table-bordered table-striped">
                         <tr>
@@ -40,16 +36,16 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h2>Knjige koje ste posudili</h2>
+                <h4>Knjige koje ste posudili</h4>
                 <hr>
             </div>
         </div>
         <div class="row">
             @foreach($books as $book)
             <div class="col-md-4 text-center book">
-                <img src="http://covers.openlibrary.org/b/isbn/{{ $book->isbn }}-M.jpg" alt="Cover za knjigu {{ $book->name }}">
-                <h4>{{ $book->name }}</h4>
-                <p>Rok vracanja: {{ $book->pivot->date_return }}</p>
+                <img class="book-cover" src="http://covers.openlibrary.org/b/isbn/{{ $book->isbn }}-M.jpg" alt="Cover za knjigu {{ $book->name }}">
+                <h5>{{ $book->name }}</h5>
+                <span class="due-date">Rok vracanja: {{ $book->pivot->date_return }}</span>
             </div>
             @endforeach
         </div>
@@ -57,14 +53,14 @@
     {{-- Layout for admins --}}
     @if(Auth::user()->hasRole('admin'))
         <div class="page-header">
-            <h2>Kratki pregled - administrator</h2>
+            <h3>Kratki pregled - administrator</h3>
         </div>
     @endif
 
     {{-- Layout for employees --}}
     @if(Auth::user()->hasRole('employee'))
         <div class="page-header">
-            <h2>Kratki pregled - zaposlenik</h2>
+            <h3>Kratki pregled - zaposlenik</h3>
         </div>
     @endif
 @endsection

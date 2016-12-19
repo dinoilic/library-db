@@ -32,3 +32,18 @@
 {
 	width: 10%;
 }
+
+.navbar-fs
+{
+  font-size: 15px;
+}
+
+.due-date
+{
+  font-size: 16px;
+}
+
+.book-cover
+{
+  height: 350px;
+}

@@ -25,10 +25,10 @@
                             <td>{{ $genre->id }}</td>
                             <td>{{ $genre->name }}</td>
                             <td>{{ $genre->display_name }}</td>
-                            <td>
+                            <td class="button-table">
                                 <a class="btn btn-primary btn-sm" href="{{ route('genre.edit', ['id' => $genre->id]) }}">Uredi zanr</a>
                             </td>
-                            <td>
+                            <td class="button-table">
                                 {{ Form::open(['method' => 'DELETE', 'route' => ['genre.destroy', $genre->id]]) }}
                                     {{ Form::hidden('id', $genre->id) }}
                                     {{ Form::submit('Obrisi zanr', ['class' => 'btn btn-sm btn-danger']) }}

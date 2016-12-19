@@ -28,7 +28,7 @@
                             <td>{{ $author->last_name }}</td>
                             <td>{{ $author->dob }}</td>
                             <td>{{ $author->dod }}</td>
-                            <td>
+                            <td class="button-table">
                                 <a class="btn btn-primary btn-sm" href="{{ route('author.edit', ['id' => $author->id]) }}">Uredi autora</a>
                             </td>
                         </tr>

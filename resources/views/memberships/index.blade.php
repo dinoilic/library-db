@@ -42,7 +42,7 @@
                                 <span class="fa fa-times red"></span> Članstvo je isteklo
                             @endif
                             </td>
-                            <td><a href="{{ route('membership.show', ['id' => $membership->id]) }}"><span class="fa fa-info blue"></span></a></td>
+                            <td class="button-table"><a class="btn btn-primary btn-sm" href="{{ route('membership.show', ['id' => $membership->id]) }}">Detalji o članarini</a></td>
                         </tr>
                     @endforeach
                 </tbody>

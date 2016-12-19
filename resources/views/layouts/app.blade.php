@@ -24,7 +24,7 @@
 
     <!-- CSS Files -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-theme.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-theme.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.css') }}">
     @yield('styles')
@@ -33,10 +33,10 @@
     <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
-    
+
 </head>
 <body>
-    <nav class="navbar navbar-inverse" role="navigation">
+    <nav class="navbar navbar-inverse navbar-fs" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -71,7 +71,7 @@
                             <li><a href="{{ route('user.index') }}">Korisnici</a></li>
                         @endif
                         <li>
-                            <a href="{{ url('/logout') }}" 
+                            <a href="{{ url('/logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                                 {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} | Odjava
