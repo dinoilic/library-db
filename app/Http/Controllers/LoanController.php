@@ -168,12 +168,6 @@ class LoanController extends Controller
     public function returnBook(Request $request, $id)
     {
         //
-        /*
-        $loan = User::findOrFail($request->input('userId'))->loans()->wherePivot('id', $id)->firstOrFail();
-
-        $loan->pivot->date_returned = Carbon\Carbon::now();
-        $loan->pivot->save();
-        */
         DB::table('book_user')->where('id', $id)->update(['date_returned' => Carbon\Carbon::now()]);
         return redirect()->route('loan.show', ['id' => $request->input('userId')]);
     }
@@ -186,8 +180,7 @@ class LoanController extends Controller
      */
     public function extendBook(Request $request, $id)
     {
-        //
-
+        // Ovo treba srediti
         $loan = User::findOrFail($request->input('userId'))->loans()->wherePivot('id', $id)->firstOrFail();
 
         $date = Carbon\Carbon::parse($loan->pivot->date_return);

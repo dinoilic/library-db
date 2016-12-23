@@ -2,20 +2,14 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-12">
-            <h2>Najpopularnija knjiga</h2>
-            <div class="media">
-                <div class="media-left">
-                    <img class="media-object" src="http://covers.openlibrary.org/b/isbn/{{ $bestBook->isbn }}-M.jpg">
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading">{{ $bestBook->name }}</h4>
-                    <hr>
-                    <h4>Opis knjige</h4>
-                    <p class="text-justify">{{ str_limit($bestBook->description, 500) }}</p>
-                </div>
+        <h2>Najpopularnije knjige mjeseca</h2>
+        <hr>
+        @for($i = 0; $i < (count($books) > 3 ? 3 : count($books)); $i++)
+            <div class="col-md-4 text-center">
+                <img src="http://covers.openlibrary.org/b/isbn/{{ $books[$i]->isbn }}-M.jpg">
+                <h4>{{ $books[$i]->name }}</h4>
             </div>
-        </div>
+        @endfor
     </div>
     <hr>
     <div class="row">

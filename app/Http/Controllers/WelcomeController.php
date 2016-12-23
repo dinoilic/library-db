@@ -15,8 +15,8 @@ class WelcomeController extends Controller
     {
         $posts = Post::paginate(5);
 
-        $endOfMonth = Carbon::now()->endOfMonth()->format('Y-m-d');
-        $startOfMonth = Carbon::now()->startOfMonth()->format('Y-m-d');
+        $endOfMonth = Carbon::now()->endOfMonth()->toDateString();
+        $startOfMonth = Carbon::now()->startOfMonth()->toDateString();
 
         $books = Book::all();
 
@@ -25,14 +25,17 @@ class WelcomeController extends Controller
 
         foreach($books as $book)
         {
-        	$loans = $book->users()->whereBetween('date_loaned', [$startOfMonth, $endOfMonth])->count();
-        	if($loans > $maxLoans)
-        	{
-        		$maxLoans = $loans;
-        		$bestBook = $book;
-        	}
+            $loans = $book->users()->whereBetween('date_loaned', [$startOfMonth, $endOfMonth])->count();
+            $book->loans_month = $loans;
+            if($loans > $maxLoans)
+            {
+                $maxLoans = $loans;
+                $bestBook = $book;
+            }
         }
 
-        return view('welcome', compact('posts', 'bestBook'));
+        $books = $books->sortByDesc('loans_month');
+
+        return view('welcome', compact('posts', 'books'));
     }
 }
