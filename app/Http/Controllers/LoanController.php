@@ -7,6 +7,7 @@ use App\User;
 use Carbon;
 use App\Book;
 use App\Membership;
+use DB;
 
 class LoanController extends Controller
 {
@@ -167,11 +168,13 @@ class LoanController extends Controller
     public function returnBook(Request $request, $id)
     {
         //
+        /*
         $loan = User::findOrFail($request->input('userId'))->loans()->wherePivot('id', $id)->firstOrFail();
 
         $loan->pivot->date_returned = Carbon\Carbon::now();
         $loan->pivot->save();
-
+        */
+        DB::table('book_user')->where('id', $id)->update(['date_returned' => Carbon\Carbon::now()]);
         return redirect()->route('loan.show', ['id' => $request->input('userId')]);
     }
 

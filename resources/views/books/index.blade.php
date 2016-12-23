@@ -43,7 +43,7 @@
                         </span></h4>
                         <h5>Kopije: {{ $book->copies }}
                         <span class="pull-right">
-                        @if($book->available > 0)
+                        @if($book->available > 0 && Auth::user()->hasRole('employee'))
                             <a class="btn btn-sm btn-success" href="{{ route('loan.create', ['bookId' => $book->id]) }}">Posudi knjigu</a>
                         @endif
                         </span>
