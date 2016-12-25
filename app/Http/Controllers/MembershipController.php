@@ -77,7 +77,11 @@ class MembershipController extends Controller
         $membership->books = $request->input('books');
         $membership->user_id = $request->input('userId');
 
-        $membership->save();
+        try {
+            $membership->save();
+        } catch ( \Illuminate\Database\QueryException $e) {
+            return response()->view('errors.107');
+        }
         
         return redirect()->route('membership.index');
     }

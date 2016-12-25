@@ -164,6 +164,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        "Khill\Lavacharts\Laravel\LavachartsServiceProvider",
+
 
         /*
          * Package Service Providers...

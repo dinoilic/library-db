@@ -35,10 +35,6 @@
                 </div>
                 {{ Form::submit('Spremi', ['class' => 'btn btn-primary']) }}
             {{ Form::close() }}
-            {{ Form::open(['method' => 'DELETE', 'route' => ['author.destroy', $author->id]]) }}
-                {{ Form::hidden('id', $author->id) }}
-                {{ Form::submit('Obrisi autora', ['class' => 'btn btn-danger']) }}
-            {{ Form::close() }}
         </div>
     </div>
 @endsection

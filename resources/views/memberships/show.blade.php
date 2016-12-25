@@ -32,14 +32,10 @@
         <div class="col-md-6">
             <h3>Opcije</h3>
             <div class="list-group">
-                <a href="{{ route('membership.edit', ['id' => $membership->id]) }}" class="list-group-item"><span class="fa fa-edit"></span> Uredi trenutnu clanarinu</a>
+                <a href="{{ route('membership.edit', ['id' => $membership->id]) }}" class="btn btn-block btn-primary">Uredi trenutnu clanarinu</a>
                 {{ Form::open(['method' => 'DELETE', 'route' => ['membership.destroy', $membership->id]]) }}
                     {{ Form::hidden('id', $membership->id) }}
-                    @if($user->hasLoans == true)
-                        {{ Form::submit('Obrisi clanarinu', ['class' => 'btn disabled btn-block btn-danger']) }}
-                    @else
                         {{ Form::submit('Obrisi clanarinu', ['class' => 'btn btn-block btn-danger']) }}
-                    @endif
                 {{ Form::close() }}
             </div>
         </div>

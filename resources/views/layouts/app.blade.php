@@ -32,8 +32,6 @@
     <!-- JavaScript Files -->
     <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
-
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fs" role="navigation">

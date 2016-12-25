@@ -97,14 +97,11 @@ class LoanController extends Controller
         $book = Book::where('id', $request->input('bookId'))->firstOrFail();
         $user = User::where('id', $request->input('userId'))->firstOrFail();
 
-        $test = $user->loans()->wherePivot('book_id', $book->id)->wherePivot('date_loaned', Carbon\Carbon::now()->toDateString())->first();
-
-        if($test != NULL)
-        {
-            return redirect()->route('book.index');
+        try {
+            $user->loans()->attach($book, ['date_loaned' => Carbon\Carbon::now(), 'date_return' => Carbon\Carbon::now()->addDays($request->input('loanLength'))]);
+        } catch ( \Illuminate\Database\QueryException $e) {
+            return response()->view('errors.105');
         }
-
-        $user->loans()->attach($book, ['date_loaned' => Carbon\Carbon::now(), 'date_return' => Carbon\Carbon::now()->addDays($request->input('loanLength'))]);
 
         return redirect()->route('loan.show', ['id' => $request->input('userId')]);
     }

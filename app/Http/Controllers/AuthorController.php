@@ -134,7 +134,11 @@ class AuthorController extends Controller
     public function destroy($id)
     {
         //
-        Author::destroy($id);
+        try {
+            Author::destroy($id);
+        } catch ( \Illuminate\Database\QueryException $e) {
+            return response()->view('errors.106');
+        }
 
         return redirect()->route('author.index');
     }

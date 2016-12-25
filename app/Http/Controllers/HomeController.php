@@ -7,6 +7,8 @@ use App\Membership;
 use App\User;
 use Auth;
 use Carbon\Carbon;
+use DB;
+use Lava;
 
 class HomeController extends Controller
 {
@@ -51,7 +53,8 @@ class HomeController extends Controller
                         ->whereNull('date_returned')
                         ->get();
 
-        return view('home', compact('memberships', 'books'));
+        $yearBooks = DB::select("SELECT MONTH(date_loaned) AS month, COUNT(*) AS count FROM book_user WHERE YEAR(date_loaned) = ".Carbon::now()->year." GROUP BY MONTH(date_loaned)");
 
+        return view('home', compact('memberships', 'books', 'yearBooks'));
     }
 }

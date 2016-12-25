@@ -17,7 +17,8 @@
                         <th>Prezime</th>
                         <th>Datum rodenja</th>
                         <th>Datum smrti</th>
-                        <th>Detalji</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,6 +31,12 @@
                             <td>{{ $author->dod }}</td>
                             <td class="button-table">
                                 <a class="btn btn-primary btn-sm" href="{{ route('author.edit', ['id' => $author->id]) }}">Uredi autora</a>
+                            </td>
+                            <td class="button-table">
+                                {{ Form::open(['method' => 'DELETE', 'route' => ['author.destroy', $author->id]]) }}
+                                    {{ Form::hidden('id', $author->id) }}
+                                    {{ Form::submit('Obrisi autora', ['class' => 'btn btn-danger']) }}
+                                {{ Form::close() }}
                             </td>
                         </tr>
                     @endforeach
