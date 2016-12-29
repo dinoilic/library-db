@@ -62,5 +62,37 @@
         <div class="page-header">
             <h3>Kratki pregled - zaposlenik</h3>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Prikaz posudenih knjiga za godinu: {{ Carbon\Carbon::now()->year }}</h4>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Mjesec</th>
+                        <th>Broj posudenih knjiga</th>
+                    </tr>
+                    @foreach($yearBooks as $yearBook)
+                    <tr>
+                        <td>{{ Carbon\Carbon::create(2000, $yearBook->month, 1, 1, 1, 1)->format('F') }}</td>
+                        <td>{{ $yearBook->count }}</td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h4>Prikaz clanarina za godinu: {{ Carbon\Carbon::now()->year }}</h4>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Mjesec</th>
+                        <th>Broj clanarina</th>
+                    </tr>
+                    @foreach($yearMemberships as $yearMembership)
+                    <tr>
+                        <td>{{ Carbon\Carbon::create(2000, $yearMembership->month, 1, 1, 1, 1)->format('F') }}</td>
+                        <td>{{ $yearMembership->count }}</td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
     @endif
 @endsection

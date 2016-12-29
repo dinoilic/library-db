@@ -53,8 +53,15 @@ class HomeController extends Controller
                         ->whereNull('date_returned')
                         ->get();
 
-        $yearBooks = DB::select("SELECT MONTH(date_loaned) AS month, COUNT(*) AS count FROM book_user WHERE YEAR(date_loaned) = ".Carbon::now()->year." GROUP BY MONTH(date_loaned)");
+        $yearBooks = DB::select("SELECT MONTH(date_loaned) AS month, COUNT(*) AS count 
+                                    FROM book_user 
+                                    WHERE YEAR(date_loaned) = ".Carbon::now()->year." GROUP BY MONTH(date_loaned)");
 
-        return view('home', compact('memberships', 'books', 'yearBooks'));
+        $yearMemberships = DB::select("SELECT MONTH(start_date) AS month, COUNT(*) AS count 
+                                        FROM memberships 
+                                        WHERE YEAR(start_date) = ".Carbon::now()->year." 
+                                        GROUP BY MONTH(start_date)");
+
+        return view('home', compact('memberships', 'books', 'yearBooks', 'yearMemberships'));
     }
 }
