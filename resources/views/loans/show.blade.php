@@ -6,13 +6,13 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <h3>Posudene knjige</h3>
+            <h3>Posuđene knjige</h3>
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Naziv knjige</th>
                         <th>Datum posudbe</th>
-                        <th>Rok za vracanje</th>
+                        <th>Rok za vraćanje</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -32,7 +32,7 @@
                             </td>
                             <td class="button-table">
                                 <a class="btn btn-sm btn-warning" href="{{ route('loan.extend', ['id' => $ubook->pivot->id, 'userId' => $user->id]) }}">
-                                    Produzi knjigu
+                                    Produži knjigu
                                 </a>
                             </td>
                         </tr>
@@ -44,14 +44,14 @@
     <hr>
     <div class="row">
         <div class="col-md-12">
-            <h3>Vracene knjige</h3>
+            <h3>Vraćene knjige</h3>
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Naziv knjige</th>
                         <th>Datum posudbe</th>
-                        <th>Rok za vracanje</th>
-                        <th>Datum vracanja</th>
+                        <th>Rok za vraćanje</th>
+                        <th>Datum vraćanja</th>
                     </tr>
                 </thead>
                 <tbody>

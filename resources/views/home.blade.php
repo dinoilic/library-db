@@ -12,10 +12,10 @@
                     <hr>
                     <table class="table table-bordered table-striped">
                         <tr>
-                            <th>Pocetni datum</th>
+                            <th>Početni datum</th>
                             <th>Krajnji datum</th>
                             <th>Stanje</th>
-                            <th>Moguce posuditi</th>
+                            <th>Moguće posuditi</th>
                         </tr>
                         @foreach($memberships as $membership)
                         <tr>
@@ -45,7 +45,7 @@
             <div class="col-md-4 text-center book">
                 <img class="book-cover" src="http://covers.openlibrary.org/b/isbn/{{ $book->isbn }}-M.jpg" alt="Cover za knjigu {{ $book->name }}">
                 <h5>{{ $book->name }}</h5>
-                <span class="due-date">Rok vracanja: {{ $book->pivot->date_return }}</span>
+                <span class="due-date">Rok vraćanja: {{ $book->pivot->date_return }}</span>
             </div>
             @endforeach
         </div>
@@ -64,11 +64,11 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <h4>Prikaz posudenih knjiga za godinu: {{ Carbon\Carbon::now()->year }}</h4>
+                <h4>Prikaz posuđenih knjiga za godinu: {{ Carbon\Carbon::now()->year }}</h4>
                 <table class="table table-bordered table-striped">
                     <tr>
                         <th>Mjesec</th>
-                        <th>Broj posudenih knjiga</th>
+                        <th>Broj posuđenih knjiga</th>
                     </tr>
                     @foreach($yearBooks as $yearBook)
                     <tr>
@@ -79,11 +79,11 @@
                 </table>
             </div>
             <div class="col-md-6">
-                <h4>Prikaz clanarina za godinu: {{ Carbon\Carbon::now()->year }}</h4>
+                <h4>Prikaz članarina za godinu: {{ Carbon\Carbon::now()->year }}</h4>
                 <table class="table table-bordered table-striped">
                     <tr>
                         <th>Mjesec</th>
-                        <th>Broj clanarina</th>
+                        <th>Broj članarina</th>
                     </tr>
                     @foreach($yearMemberships as $yearMembership)
                     <tr>

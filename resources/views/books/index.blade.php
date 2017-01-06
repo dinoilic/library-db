@@ -6,7 +6,7 @@
             <h3>Filteri</h3>
             <hr>
             <form action="{{ url('book') }}" method="GET">
-                <h4>Zanrovi</h4>
+                <h4>Žanrovi</h4>
                 @foreach($genres as $genre)
                     <div class="radio">
                         <label>
@@ -15,7 +15,7 @@
                         </label>
                     </div>
                 @endforeach
-                <input type="submit" class="btn btn-primary" value="Pretrazi">
+                <input type="submit" class="btn btn-primary" value="Pretraži">
             </form>
         </div>
         <div class="col-md-9">

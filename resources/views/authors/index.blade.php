@@ -15,7 +15,7 @@
                         <th>ID</th>
                         <th>Ime</th>
                         <th>Prezime</th>
-                        <th>Datum rodenja</th>
+                        <th>Datum rođenja</th>
                         <th>Datum smrti</th>
                         <th></th>
                         <th></th>
@@ -35,7 +35,7 @@
                             <td class="button-table">
                                 {{ Form::open(['method' => 'DELETE', 'route' => ['author.destroy', $author->id]]) }}
                                     {{ Form::hidden('id', $author->id) }}
-                                    {{ Form::submit('Obrisi autora', ['class' => 'btn btn-danger']) }}
+                                    {{ Form::submit('Obriši autora', ['class' => 'btn btn-sm btn-danger']) }}
                                 {{ Form::close() }}
                             </td>
                         </tr>

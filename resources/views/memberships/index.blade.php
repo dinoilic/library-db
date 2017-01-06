@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="page-header">
-        <h1>Informacije o clanarinama</h1>
+        <h1>Informacije o članarinama</h1>
     </div>
 
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ route('membership.create') }}" class="btn btn-block btn-primary"><span class="fa fa-plus"></span> Dodaj novu clanarinu</a>
+            <a href="{{ route('membership.create') }}" class="btn btn-block btn-primary"><span class="fa fa-plus"></span> Dodaj novu članarinu</a>
         </div>
     </div>
     <hr>
@@ -18,11 +18,11 @@
                     <tr>
                         <th>Ime</th>
                         <th>Prezime</th>
-                        <th>Datum pocetka</th>
+                        <th>Datum početka</th>
                         <th>Datum kraja</th>
                         <th>Broj knjiga</th>
                         <th>Broj preostalih knjiga</th>
-                        <th>Status clanstva</th>
+                        <th>Status članstva</th>
                         <th>Detalji</th>
                     </tr>
                 </thead>

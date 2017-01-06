@@ -15,16 +15,18 @@
     <div class="row">
         {{ $posts->links() }}
     </div>
-    @foreach($posts as $post)
         <div class="row">
-            <div class="col-md-12">
-                <h3>{{ $post->post_title }} <small class="pull-right">{{ $post->author()->first()->first_name }} {{ $post->author()->first()->last_name }}</small></h3>
-                <p>{{ str_limit($post->post_body, 20) }}</p>
-                <a class="btn btn-primary" href="{{ url('details', ['id' => $post->id]) }}">Procitaj vise</a>
+    @foreach($posts as $post)
+            <div class="col-md-4">
+                <h5>{{ $post->post_title }}</h5>
+                <h6>Autor: <small>{{ $post->author()->first()->first_name }} {{ $post->author()->first()->last_name }}</small></h6>
+                <h6>Datum: <small>{{ $post->created_at }}</small></h6>
+                <p class="text-justify">{{ str_limit($post->post_body, 200) }}</p>
+                <a class="btn btn-primary btn-sm" href="{{ url('details', ['id' => $post->id]) }}">Pročitaj vise</a>
                 <hr>
             </div>
-        </div>
     @endforeach
+        </div>
     <div class="row">
         {{ $posts->links() }}
     </div>

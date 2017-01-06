@@ -129,8 +129,8 @@ return [
         'authors' => 'Autori',
         'genres' => 'Žanrovi',
         'displayName' => 'Naziv za prikaz',
-        'postTitle' => 'Naslov clanka',
-        'postBody' => 'Tekst clanka',
+        'postTitle' => 'Naslov članka',
+        'postBody' => 'Tekst članka',
         'loanLength' => 'Duljina posudbe',
     ],
 

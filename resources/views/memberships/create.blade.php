@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h1>Kreiranje nove clanarine</h1>
+        <h1>Kreiranje nove članarine</h1>
     </div>
 
     @if (count($errors) > 0)
@@ -17,11 +17,11 @@
         <div class="col-md-12">
             {{ Form::open(['method' => 'POST', 'route' => 'membership.store']) }}
                 <div class="form-group">
-                    {{ Form::label('startDate', 'Datum pocetka clanarine') }}
+                    {{ Form::label('startDate', 'Datum početka članarine') }}
                     {{ Form::text('startDate', null, ['class' => 'form-control datepicker']) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('endDate', 'Datum kraja clanarine') }}
+                    {{ Form::label('endDate', 'Datum kraja članarine') }}
                     {{ Form::text('endDate', null, ['class' => 'form-control datepicker']) }}
                 </div>
                 <div class="form-group">
@@ -29,7 +29,7 @@
                     {{ Form::text('books', null, ['class' => 'form-control']) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('name', 'Clan') }}
+                    {{ Form::label('name', 'Član') }}
                     <select class="form-control" name="userId">
                         @foreach($allUsers as $user)
                             @if($user->hasRole('member'))

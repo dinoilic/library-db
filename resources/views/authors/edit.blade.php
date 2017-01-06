@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h1>Uredujete: <small>{{ $author->first_name }} {{ $author->last_name }}</small></h1>
+        <h1>Uređujete: <small>{{ $author->first_name }} {{ $author->last_name }}</small></h1>
     </div>
 
     @if (count($errors) > 0)
@@ -26,7 +26,7 @@
                     {{ Form::text('lastName', $author->last_name, ['class' => 'form-control']) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('dob', 'Datum rodenja') }}
+                    {{ Form::label('dob', 'Datum rođenja') }}
                     {{ Form::text('dob', $author->dob, ['class' => 'form-control datepicker']) }}
                 </div>
                 <div class="form-group">

@@ -18,11 +18,11 @@
             {{ Form::open(['method' => 'PUT', 'route' => ['post.update', $post->id]]) }}
                 {{ Form::hidden('id', $post->id) }}
                 <div class="form-group">
-                    {{ Form::label('postTitle', 'Ime clanka') }}
+                    {{ Form::label('postTitle', 'Ime članka') }}
                     {{ Form::text('postTitle', $post->post_title, ['class' => 'form-control']) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('postBody', 'Tekst clanka') }}
+                    {{ Form::label('postBody', 'Tekst članka') }}
                     {{ Form::textarea('postBody', $post->post_body, ['class' => 'form-control']) }}
                 </div>
                 {{ Form::submit('Spremi', ['class' => 'btn btn-primary']) }}

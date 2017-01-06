@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="page-header">
-        <h1>Informacije o clancima</h1>
+        <h1>Informacije o člancima</h1>
     </div>
     <div class="list-group">
-        <a href="{{ route('post.create') }}" class="btn btn-primary btn-block"><span class="fa fa-plus"></span> Dodaj novi clanak</a>
+        <a href="{{ route('post.create') }}" class="btn btn-primary btn-block"><span class="fa fa-plus"></span> Dodaj novi članak</a>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -17,7 +17,7 @@
                         <th>Kratki opis</th>
                         <th>Detalji</th>
                         <th>Uredi</th>
-                        <th>Obrisi</th>
+                        <th>Obriši</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,15 +27,15 @@
                             <td>{{ $post->post_title }}</td>
                             <td>{{ str_limit($post->post_body, 20) }}</td>
                             <td class="button-table">
-                                <a class="btn btn-primary btn-sm" href="{{ url('details', ['id' => $post->id]) }}">Pregledaj clanak</a>
+                                <a class="btn btn-primary btn-sm" href="{{ url('details', ['id' => $post->id]) }}">Pregledaj članak</a>
                             </td>
                             <td class="button-table">
-                                <a class="btn btn-primary btn-sm" href="{{ route('post.edit', ['id' => $post->id]) }}">Uredi clanak</a>
+                                <a class="btn btn-primary btn-sm" href="{{ route('post.edit', ['id' => $post->id]) }}">Uredi članak</a>
                             </td>
                             <td class="button-table">
                                 {{ Form::open(['method' => 'DELETE', 'route' => ['post.destroy', $post->id]]) }}
                                     {{ Form::hidden('id', $post->id) }}
-                                    {{ Form::submit('Obrisi clanak', ['class' => 'btn btn-sm btn-danger']) }}
+                                    {{ Form::submit('Obriši članak', ['class' => 'btn btn-sm btn-danger']) }}
                                 {{ Form::close() }}
                             </td>
                         </tr>

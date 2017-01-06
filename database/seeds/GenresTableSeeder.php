@@ -14,12 +14,12 @@ class GenresTableSeeder extends Seeder
         //
         DB::table('genres')->insert([
             'name' => 'fiction',
-            'display_name' => 'Fiction',
+            'display_name' => 'Fikcija',
         ]);
 
         DB::table('genres')->insert([
             'name' => 'comedy',
-            'display_name' => 'Comedy',
+            'display_name' => 'Komedija',
         ]);
 
         DB::table('genres')->insert([
@@ -29,42 +29,42 @@ class GenresTableSeeder extends Seeder
 
         DB::table('genres')->insert([
             'name' => 'crime',
-            'display_name' => 'Crime/Detective',
+            'display_name' => 'Kriminalistička drama',
         ]);
 
         DB::table('genres')->insert([
             'name' => 'fantasy',
-            'display_name' => 'Fantasy',
+            'display_name' => 'Fantastika',
         ]);
 
         DB::table('genres')->insert([
             'name' => 'horror',
-            'display_name' => 'Horror',
+            'display_name' => 'Horor',
         ]);
 
         DB::table('genres')->insert([
             'name' => 'science-fiction',
-            'display_name' => 'Science Fiction',
+            'display_name' => 'Znanstvena fantastika',
         ]);
 
         DB::table('genres')->insert([
             'name' => 'realistic-fiction',
-            'display_name' => 'Realistic Fiction',
+            'display_name' => 'Realistična fantastika',
         ]);
 
         DB::table('genres')->insert([
             'name' => 'short-story',
-            'display_name' => 'Short Story',
+            'display_name' => 'Kratka priča',
         ]);
 
         DB::table('genres')->insert([
             'name' => 'contemporary',
-            'display_name' => 'Contemporary',
+            'display_name' => 'Moderna drama',
         ]);
 
         DB::table('genres')->insert([
             'name' => 'mystery',
-            'display_name' => 'Mystery',
+            'display_name' => 'Misterija',
         ]);
     }
 }

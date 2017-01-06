@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h1>Uredujete: <small>{{ $genre->display_name }}</small></h1>
+        <h1>Uređujete: <small>{{ $genre->display_name }}</small></h1>
     </div>
 
     @if (count($errors) > 0)

@@ -42,7 +42,7 @@
                         @endforeach
                     </div>
                     <div class="col-md-6">
-                    <h3>Zanrovi</h3>
+                    <h3>Žanrovi</h3>
                         <hr>
                         @foreach($genres as $genre)
                             <div class="checkbox">

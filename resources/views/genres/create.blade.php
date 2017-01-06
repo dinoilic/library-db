@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h1>Kreiranje novog zanra</h1>
+        <h1>Kreiranje novog žanra</h1>
     </div>
 
     @if (count($errors) > 0)

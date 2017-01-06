@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h1>Uredujete: <small>{{ $book->name }}</small></h1>
+        <h1>Uređujete: <small>{{ $book->name }}</small></h1>
     </div>
 
     @if (count($errors) > 0)
@@ -48,7 +48,7 @@
                         @endforeach
                     </div>
                     <div class="col-md-6">
-                    <h3>Zanrovi</h3>
+                    <h3>Žanrovi</h3>
                         <hr>
                         @foreach($genres as $genre)
                             <div class="checkbox">

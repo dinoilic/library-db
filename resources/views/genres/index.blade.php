@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="page-header">
-        <h1>Informacije o zanrovima</h1>
+        <h1>Informacije o žanrovima</h1>
     </div>
     <div class="list-group">
-        <a href="{{ route('genre.create') }}" class="btn btn-primary btn-block"><span class="fa fa-plus"></span> Dodaj novi zanr</a>
+        <a href="{{ route('genre.create') }}" class="btn btn-primary btn-block"><span class="fa fa-plus"></span> Dodaj novi žanr</a>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -15,7 +15,7 @@
                         <th>ID</th>
                         <th>Ime</th>
                         <th>Ime za prikaz</th>
-                        <th>Uredivanje</th>
+                        <th>Uređivanje</th>
                         <th>Brisanje</th>
                     </tr>
                 </thead>
@@ -26,12 +26,12 @@
                             <td>{{ $genre->name }}</td>
                             <td>{{ $genre->display_name }}</td>
                             <td class="button-table">
-                                <a class="btn btn-primary btn-sm" href="{{ route('genre.edit', ['id' => $genre->id]) }}">Uredi zanr</a>
+                                <a class="btn btn-primary btn-sm" href="{{ route('genre.edit', ['id' => $genre->id]) }}">Uredi žanr</a>
                             </td>
                             <td class="button-table">
                                 {{ Form::open(['method' => 'DELETE', 'route' => ['genre.destroy', $genre->id]]) }}
                                     {{ Form::hidden('id', $genre->id) }}
-                                    {{ Form::submit('Obrisi zanr', ['class' => 'btn btn-sm btn-danger']) }}
+                                    {{ Form::submit('Obriši žanr', ['class' => 'btn btn-sm btn-danger']) }}
                                 {{ Form::close() }}
                             </td>
                         </tr>

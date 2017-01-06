@@ -49,7 +49,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
                     @if(Auth::check())
-                        <li><a href="{{ url('home') }}">Pocetna</a></li>
+                        <li><a href="{{ url('home') }}">Početna</a></li>
                         @if(Auth::user()->hasRole('member'))
                             <li><a href="{{ route('book.index') }}">Knjige</a></li>
                         @endif
@@ -59,13 +59,13 @@
                     @if(Auth::check())
                         @if(Auth::user()->hasRole('employee'))
                             <li><a href="{{ route('author.index') }}">Autori</a></li>
-                            <li><a href="{{ route('genre.index') }}">Zanrovi</a></li>
-                            <li><a href="{{ route('membership.index') }}">Clanarine</a></li>
+                            <li><a href="{{ route('genre.index') }}">Žanrovi</a></li>
+                            <li><a href="{{ route('membership.index') }}">Članarine</a></li>
                             <li><a href="{{ route('book.index') }}">Knjige</a></li>
                             <li><a href="{{ route('loan.index') }}">Posudbe</a></li>
                         @endif
                         @if(Auth::user()->hasRole('admin'))
-                            <li><a href="{{ route('post.index') }}">Clanci</a></li>
+                            <li><a href="{{ route('post.index') }}">Članci</a></li>
                             <li><a href="{{ route('user.index') }}">Korisnici</a></li>
                         @endif
                         <li>

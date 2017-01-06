@@ -13,7 +13,7 @@ class WelcomeController extends Controller
 
     public function index()
     {
-        $posts = Post::paginate(5);
+        $posts = Post::orderBy('created_at', 'DESC')->paginate(6);
 
         $endOfMonth = Carbon::now()->endOfMonth()->toDateString();
         $startOfMonth = Carbon::now()->startOfMonth()->toDateString();

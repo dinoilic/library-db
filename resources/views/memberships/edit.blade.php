@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h1>Uredujete clanarinu za: <small>{{ $user->first_name }} {{ $user->last_name }}</small></h1>
+        <h1>Uređujete članarinu za: <small>{{ $user->first_name }} {{ $user->last_name }}</small></h1>
     </div>
 
     @if (count($errors) > 0)
@@ -18,11 +18,11 @@
             {{ Form::open(['method' => 'PUT', 'route' => ['membership.update', $membership->id]]) }}
                 {{ Form::hidden('id', $membership->id) }}
                 <div class="form-group">
-                    {{ Form::label('startDate', 'Datum pocetka clanarine') }}
+                    {{ Form::label('startDate', 'Datum početka članarine') }}
                     {{ Form::text('startDate', $membership->start_date, ['class' => 'form-control datepicker']) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('endDate', 'Datum kraja clanarine') }}
+                    {{ Form::label('endDate', 'Datum kraja članarine') }}
                     {{ Form::text('endDate', $membership->end_date, ['class' => 'form-control datepicker']) }}
                 </div>
                 <div class="form-group">

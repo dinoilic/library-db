@@ -11,7 +11,7 @@
                     <tr>
                         <th>Ime</th>
                         <th>Prezime</th>
-                        <th>Broj nevracenih knjiga</th>
+                        <th>Broj nevraćenih knjiga</th>
                         <th>Detalji</th>
                     </tr>
                 </thead>
